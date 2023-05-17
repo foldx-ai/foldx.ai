@@ -1,26 +1,25 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { useEffect } from "react";
+import 'grapesjs/dist/css/grapes.min.css'
+import grapesjs from "grapesjs";
+
+import websitePlugin from 'grapesjs-preset-webpage';
+import basicBlockPlugin from 'grapesjs-blocks-basic'
+import formPlugin from 'grapesjs-plugin-forms'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    useEffect(() => {
+        grapesjs.init({
+            container: '#gjs',
+            width: '100%',
+            plugins: [websitePlugin, basicBlockPlugin, formPlugin],
+        })
+    }, []);
+    return (
+        <div id="gjs"></div>
+    );
 }
 
 export default App;
